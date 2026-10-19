@@ -31,4 +31,4 @@ npm run dev
 - Customer reviews are intentionally not fabricated; add approved, verified testimonials when available.
 - Images are loaded from remote Unsplash URLs and require an internet connection.
 - Verify image relevance/licensing, business service claims, contact details, accessibility, and production build before launch.
-- The four concepts share content and functional components but use separate visual themes. Select a direction in the top selector to compare them.
+- Each template is a separate standalone project in `templates/`, ready to hand off independently.
