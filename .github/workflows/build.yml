@@ -21,7 +21,7 @@ jobs:
       - name: Type-check and build
         run: npm run build
 
-  build-independent-concepts:
+  build-independent-templates:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -29,7 +29,7 @@ jobs:
         concept: [architectural, airflow-lab, clear-living, field-notes]
     defaults:
       run:
-        working-directory: concepts/${{ matrix.concept }}
+        working-directory: templates/${{ matrix.concept }}
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
