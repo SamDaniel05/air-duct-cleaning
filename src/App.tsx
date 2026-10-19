@@ -16,7 +16,7 @@ type Key = keyof typeof concepts;
 const services = [
  {title:"Residential air-duct cleaning",text:"For homeowners looking to address accumulated dust and debris in accessible supply and return ductwork, registers and related components.",tag:"FOR THE HOME",icon:House,img:"https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1000&q=85"},
  {title:"Commercial ventilation care",text:"A coordinated approach for offices, retail spaces and workplaces, with practical planning around access and the needs of the building.",tag:"FOR WORKPLACES",icon:Building2,img:"https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1000&q=85"},
- {title:"Indoor air quality enquiries",text:"Discuss ventilation hygiene concerns and related assessment needs so the next step can be scoped to your space.",tag:"LET'S DISCUSS",icon:Wind,img:"https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?auto=format&fit=crop&w=1000&q=85"}
+ {title:"Indoor air quality enquiries",text:"Discuss ventilation hygiene concerns and related assessment needs so the next step can be scoped to your space.",tag:"LET'S DISCUSS",icon:Wind,img:"https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1000&q=85"}
 ];
 const faqs = [
  ["What does air-duct cleaning involve?","The work may include checking accessible parts of the system, protecting the work area, cleaning agreed duct sections and registers, and collecting removed debris. The exact scope depends on the system and access."],
