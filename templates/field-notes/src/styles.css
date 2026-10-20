@@ -278,3 +278,12 @@
 .contact-phone-number:hover,.footer-phone-number:hover{text-decoration:underline}
 .footer-phone-number{color:#e5b08e;font-size:13px;margin:0 0 4px}
 @media(max-width:560px){.contact-callout{flex-wrap:wrap}.contact-phone-number{margin-left:58px}}
+
+
+/* Demo business address shared across all template concepts. */
+.contact-demo-address{display:flex;flex-direction:column;gap:3px;flex-basis:100%;margin-left:58px;font-size:11px;line-height:1.55;letter-spacing:0}
+.contact-demo-address>strong{font-size:8px;letter-spacing:.12em;color:var(--muted)}
+.contact-demo-address>span{font-size:12px;overflow-wrap:anywhere}
+.footer-demo-address{font-size:11px;line-height:1.65;color:#bdcbc7;margin:0 0 8px;max-width:240px;overflow-wrap:anywhere}
+.footer-demo-address small{display:block;color:#e5b08e;font-size:9px;margin-top:3px}
+@media(max-width:560px){.contact-demo-address{margin-left:0}}
