@@ -386,3 +386,41 @@
  .hero-desc,.about-copy p,.matter-copy>p,.section-heading>p,.why-heading>p,.faq-intro>p,.contact-copy>p{overflow-wrap:anywhere}
  .eyebrow,.section-label{overflow-wrap:anywhere}
 }
+
+
+/* Contrast correction: the Airflow Lab theme reverses --ink/--bg for its light text,
+   so the footer must use an explicit dark surface rather than var(--ink). */
+.theme-lab .footer{
+  background:#080c0d!important;
+  color:#f4f7f1!important;
+  opacity:1!important;
+  visibility:visible!important;
+}
+.theme-lab .footer .footer-invitation,
+.theme-lab .footer .footer-main,
+.theme-lab .footer .footer-bottom{
+  opacity:1!important;
+  visibility:visible!important;
+  transform:none!important;
+}
+.theme-lab .footer .footer-invitation h2,
+.theme-lab .footer .footer-column h3,
+.theme-lab .footer .brand-name{color:#f4f7f1!important}
+.theme-lab .footer .footer-invitation h2 em{color:#c5f169!important}
+.theme-lab .footer .footer-invitation p,
+.theme-lab .footer .footer-brand-block>p,
+.theme-lab .footer .footer-contact>p,
+.theme-lab .footer .footer-demo-address,
+.theme-lab .footer .footer-column>a,
+.theme-lab .footer .footer-bottom{color:#c6d1cb!important}
+.theme-lab .footer .footer-demo-address small,
+.theme-lab .footer .footer-phone-number,
+.theme-lab .footer .footer-contact .footer-top,
+.theme-lab .footer .footer-bottom a{color:#c5f169!important}
+.theme-lab .footer .brand-mark{background:#c5f169!important;color:#111718!important}
+.theme-lab .footer .brand small{color:#c6d1cb!important}
+.theme-lab .footer .footer-inline-link{color:#f4f7f1!important;border-color:#7d918d}
+.theme-lab .footer .footer-inline-link:hover,
+.theme-lab .footer .footer-column>a:hover,
+.theme-lab .footer .footer-bottom a:hover{color:#c5f169!important}
+.theme-lab .footer .footer-estimate{background:#c5f169!important;color:#111718!important}
