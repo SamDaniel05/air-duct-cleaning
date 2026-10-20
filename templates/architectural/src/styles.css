@@ -357,3 +357,32 @@
 .contact-callout .contact-phone-number{display:inline-flex;align-items:center;gap:8px}
 .contact-callout .contact-phone-number svg{display:block;flex:0 0 16px;stroke:currentColor}
 @media(max-width:700px){.contact-callout .contact-phone-number{gap:8px}}
+
+/* QA recovery: keep contact content readable without forcing a rigid three-column grid. */
+.contact-callout{display:flex;flex-wrap:wrap;align-items:center;gap:14px;padding:18px 0;min-width:0}
+.contact-callout>.contact-mark{flex:0 0 44px;grid-column:auto;grid-row:auto}
+.contact-callout>span:nth-child(2){flex:1 1 190px;grid-column:auto;grid-row:auto;min-width:0;letter-spacing:.035em;overflow-wrap:anywhere}
+.contact-callout .contact-phone-number{flex:0 1 auto;grid-column:auto;grid-row:auto;justify-self:auto;margin:0;min-width:0;white-space:nowrap}
+.contact-callout .contact-demo-address{flex:1 1 100%;grid-column:auto;grid-row:auto;margin:0 0 0 58px;padding-top:12px;border-top:1px solid #c6d2c8;min-width:0;overflow-wrap:anywhere}
+.contact-callout .contact-demo-address>span{overflow-wrap:anywhere}
+@media(max-width:700px){
+ .contact-callout{display:flex;gap:12px;padding:20px 0}
+ .contact-callout>.contact-mark{flex:0 0 42px}
+ .contact-callout>span:nth-child(2){flex:1 1 calc(100% - 58px);letter-spacing:.02em}
+ .contact-callout .contact-phone-number{flex:0 1 auto;margin-left:58px;white-space:normal}
+ .contact-callout .contact-demo-address{flex:1 1 calc(100% - 58px);margin-left:58px;padding-top:10px}
+}
+@media(max-width:380px){
+ .contact-callout>.contact-mark{flex-basis:34px}
+ .contact-callout>span:nth-child(2){flex-basis:calc(100% - 48px);font-size:9px;letter-spacing:0}
+ .contact-callout .contact-phone-number,.contact-callout .contact-demo-address{margin-left:48px}
+ .contact-callout .contact-phone-number{font-size:14px}
+}
+/* Prevent long headings and labels from being clipped at narrow widths. */
+.hero h1,.hero h2,.section-heading h2,.about-story h2,.matter-copy h2,.contact-copy h2{max-width:100%;overflow-wrap:normal;word-break:normal}
+@media(max-width:560px){
+ .section-pad{padding-top:72px;padding-bottom:72px}
+ .hero h1{font-size:clamp(36px,9.5vw,52px);line-height:1.08;letter-spacing:-.055em}
+ .hero-desc,.about-copy p,.matter-copy>p,.section-heading>p,.why-heading>p,.faq-intro>p,.contact-copy>p{overflow-wrap:anywhere}
+ .eyebrow,.section-label{overflow-wrap:anywhere}
+}
