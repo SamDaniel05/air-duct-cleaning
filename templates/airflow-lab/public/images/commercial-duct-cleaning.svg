@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+<title id="title">Commercial ventilation duct cleaning</title>
+<desc id="desc">Illustration of a technician cleaning a large commercial ventilation duct with a vacuum hose.</desc>
+<defs>
+ <linearGradient id="wall" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#465655"/><stop offset="1" stop-color="#151f20"/></linearGradient>
+ <linearGradient id="duct" x1="0" y1="0" x2="0.9" y2="1"><stop stop-color="#d9e0d8"/><stop offset=".45" stop-color="#82918a"/><stop offset="1" stop-color="#394947"/></linearGradient>
+ <linearGradient id="inner" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#101819"/><stop offset="1" stop-color="#566460"/></linearGradient>
+ <linearGradient id="sleeve" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#253031"/><stop offset="1" stop-color="#090f10"/></linearGradient>
+ <pattern id="grain" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M0 9H32M0 25H32" stroke="#e4eee5" stroke-opacity=".045"/></pattern>
+</defs>
+<rect width="1200" height="800" fill="url(#wall)"/><rect width="1200" height="800" fill="url(#grain)"/>
+<path d="M0 90L1200 0V800H0Z" fill="#1b2728" opacity=".48"/>
+<path d="M90 130L760 60L1120 185L450 280Z" fill="#a9b7ae" opacity=".25"/>
+<path d="M90 130L760 60L1120 185L450 280Z" fill="none" stroke="#c5f169" stroke-opacity=".55" stroke-width="5"/>
+<path d="M130 160L742 100L1045 195L437 258Z" fill="url(#inner)" stroke="#dce5dc" stroke-width="12"/>
+<path d="M130 160L437 258V545L130 435Z" fill="#65736c" stroke="#b4c0b6" stroke-width="10"/>
+<path d="M437 258L1045 195V475L437 545Z" fill="#293737" stroke="#8b9a91" stroke-width="10"/>
+<path d="M170 195L407 272V500L170 416Z" fill="#172121"/>
+<path d="M472 286L1008 230V444L472 510Z" fill="#172121"/>
+<path d="M472 286L1008 230" stroke="#71817a" stroke-width="5"/>
+<path d="M475 320L1004 266M475 365L1004 311M475 410L1004 356M475 455L1004 401" stroke="#c1cdc3" stroke-opacity=".18" stroke-width="3"/>
+<path d="M0 690L310 560L630 620L1200 520V800H0Z" fill="#11191a"/>
+<path d="M720 800L800 545L980 515L1090 800Z" fill="#293434"/>
+<path d="M792 555L950 530L1020 800H735Z" fill="#596861"/>
+<path d="M790 580L960 554M776 625L974 596M762 670L988 641M748 715L1000 686M735 760L1010 731" stroke="#c3d0c6" stroke-opacity=".24" stroke-width="5"/>
+<!-- technician silhouette and protective clothing -->
+<path d="M690 275Q725 220 785 236L840 274L868 390L824 495L708 474L665 375Z" fill="#c5f169"/>
+<path d="M700 282Q744 251 784 268L813 350L770 420L701 390L674 331Z" fill="#e4e9dc"/>
+<path d="M722 235Q733 195 773 205Q809 215 800 249L779 274L741 267Z" fill="#c4d0c7"/>
+<path d="M720 234Q747 211 793 231L800 248Q759 244 731 261Z" fill="#243130"/>
+<path d="M710 296L653 350L591 332L567 354L600 383L684 389L748 341Z" fill="#d4ded4"/>
+<path d="M588 331L554 340L542 363L569 376L600 358Z" fill="#c5f169"/>
+<path d="M810 305L872 350L918 327L936 348L888 393L834 378Z" fill="#d4ded4"/>
+<path d="M910 325L947 315L963 334L940 358L916 350Z" fill="#c5f169"/>
+<path d="M708 465L690 584L735 600L780 490Z" fill="#182324"/>
+<path d="M783 477L800 594L845 584L828 459Z" fill="#182324"/>
+<path d="M685 578L736 590L731 625L666 625Z" fill="#111819"/>
+<path d="M800 586L849 575L872 607L806 616Z" fill="#111819"/>
+<!-- vacuum hose runs from technician to duct opening -->
+<path d="M942 343C1010 350 1016 435 956 469S855 498 850 545S945 628 875 689S685 715 600 670" fill="none" stroke="#070c0d" stroke-width="47" stroke-linecap="round"/>
+<path d="M942 343C1010 350 1016 435 956 469S855 498 850 545S945 628 875 689S685 715 600 670" fill="none" stroke="#45504d" stroke-width="34" stroke-linecap="round" stroke-dasharray="8 11"/>
+<path d="M600 670L552 646L534 674L580 706Z" fill="#101718" stroke="#b7c4ba" stroke-width="5"/>
+<path d="M545 660L465 641L452 663L532 688Z" fill="#77867e" stroke="#c5f169" stroke-width="4"/>
+<path d="M90 740H1110" stroke="#c5f169" stroke-opacity=".65" stroke-width="2"/>
+<rect x="55" y="45" width="350" height="60" rx="4" fill="#101718" fill-opacity=".88" stroke="#c5f169" stroke-opacity=".6"/>
+<circle cx="82" cy="75" r="7" fill="#c5f169"/><text x="105" y="82" fill="#f2f6ee" font-family="Arial,sans-serif" font-size="21" font-weight="700" letter-spacing="2">COMMERCIAL VENTILATION</text>
+</svg>
