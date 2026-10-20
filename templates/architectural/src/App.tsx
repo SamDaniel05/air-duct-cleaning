@@ -36,7 +36,7 @@ function App(){
  const key: Key = "architectural";
  const [menu,setMenu]=useState(false); const [faq,setFaq]=useState<number|null>(0); const [sent,setSent]=useState(false);
  const c=concepts[key];
- const handleImageError=(event:SyntheticEvent<HTMLImageElement>)=>{const image=event.currentTarget;if(image.dataset.fallbackApplied==="true")return;image.dataset.fallbackApplied="true";image.onerror=null;image.src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1400&q=85";};
+ const handleImageError=(event:SyntheticEvent<HTMLImageElement>)=>{const image=event.currentTarget;if(image.dataset.fallbackApplied==="true")return;image.dataset.fallbackApplied="true";image.onerror=null;image.src="https://cleanairtechnologiesnj.com/wp-content/uploads/2025/09/vacuum-hose-cleaning-air-vent-1024x701.png";};
  useEffect(()=>{document.documentElement.dataset.theme=c.theme;document.title="Airduct — "+c.name;window.scrollTo({top:0,behavior:"auto"});setMenu(false);},[key,c]);
  useGSAP(()=>{gsap.utils.toArray<HTMLElement>(".reveal").forEach((el)=>{gsap.fromTo(el,{y:18,autoAlpha:0},{y:0,autoAlpha:1,duration:.65,ease:"power2.out",scrollTrigger:{trigger:el,start:"top 92%",once:true}})});
   const comparison=document.querySelector<HTMLElement>(".comparison-section");
