@@ -1,0 +1,86 @@
+name: Package Airduct for TL
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Build main website
+        run: |
+          npm install
+          npm run build
+          mkdir -p deliverables/production-builds/main
+          cp -R dist/. deliverables/production-builds/main/
+
+      - name: Build four templates
+        shell: bash
+        run: |
+          set -euo pipefail
+          for template in architectural airflow-lab clear-living field-notes; do
+            npm --prefix "templates/$template" install
+            npm --prefix "templates/$template" run build
+            mkdir -p "deliverables/production-builds/$template"
+            cp -R "templates/$template/dist/." "deliverables/production-builds/$template/"
+          done
+
+      - name: Add build instructions
+        run: |
+          cat > deliverables/production-builds/README.txt <<'EOF'
+          AIRDUCT PRODUCTION BUILDS
+          
+          Each folder contains a ready-built website, including its index.html and generated assets:
+          - main/
+          - architectural/
+          - airflow-lab/
+          - clear-living/
+          - field-notes/
+          
+          Deploy the CONTENTS of the required folder to a static web host. Do not separate index.html from its assets.
+          These are built files; Node.js and node_modules are not required to host them.
+          EOF
+
+      - name: Prepare source bundle without node_modules
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p deliverables/source
+          git archive --format=tar HEAD | tar -xf - -C deliverables/source
+          find deliverables/source -type d -name node_modules -prune -exec rm -rf {} +
+          cat > deliverables/source/DELIVERY-NOTES.txt <<'EOF'
+          AIRDUCT SOURCE CODE
+          
+          This source bundle is exported from the repository's tracked files.
+          node_modules and the .git directory are not included.
+          To install dependencies and build locally, use Node.js 22, then run npm install and npm run build in the project root. Each template in templates/ also has its own package.json and build script.
+          EOF
+
+      - name: Upload production builds
+        uses: actions/upload-artifact@v4
+        with:
+          name: Airduct-Production-Builds
+          path: deliverables/production-builds/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload source code without node_modules
+        uses: actions/upload-artifact@v4
+        with:
+          name: Airduct-Source-No-Node-Modules
+          path: deliverables/source/
+          if-no-files-found: error
+          retention-days: 30
