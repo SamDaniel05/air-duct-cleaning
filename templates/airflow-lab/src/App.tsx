@@ -12,7 +12,7 @@ const concepts = {
 } as const;
 type Key = keyof typeof concepts;
 const visualAssets: Record<Key,{about:string;matter:string;why:string;services:[string,string,string]}> = {
- "airflow-lab":{about:"https://emersonairnj.com/assets/duct-service-1-DOhzKEV3.jpg",matter:"https://www.socalgreenairandchimney.com/images/blog/professional-air-duct-cleaning-los-angeles.jpg",why:"https://cdn.prod.website-files.com/67862cb19c5acbe080542da5/68131bdf29cc0e966aebb82a_DuctCleaning_2.webp",services:["https://dryerducks.com/images/adc.png","https://airductcleaninghillsborobeach.com/_resources/images/page/1_246.webp","https://www.panhandlecr.com/images/duct%20clean%208-7.jpeg"]}
+ "airflow-lab":{about:"https://emersonairnj.com/assets/duct-service-1-DOhzKEV3.jpg",matter:"https://www.socalgreenairandchimney.com/images/blog/professional-air-duct-cleaning-los-angeles.jpg",why:"https://cdn.prod.website-files.com/67862cb19c5acbe080542da5/68131bdf29cc0e966aebb82a_DuctCleaning_2.webp",services:["https://dryerducks.com/images/adc.png",`${import.meta.env.BASE_URL}images/commercial-duct-cleaning.svg`,"https://www.panhandlecr.com/images/duct%20clean%208-7.jpeg"]}
 };
 const comparisonImage = "https://i.insider.com/60a3d393f27b4c00194450a4?format=jpeg&width=1200";
 const services = [
