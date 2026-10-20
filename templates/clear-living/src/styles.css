@@ -271,3 +271,10 @@
  .comparison-section .comparison-frame{justify-content:center}
  .comparison-section .comparison-static-image{width:100%;max-height:none;max-width:760px;margin-inline:auto}
 }
+
+
+/* Shared demo contact number — replace with the client's real number before launch. */
+.contact-phone-number,.footer-phone-number{color:var(--accent);font-size:14px;font-weight:750;letter-spacing:.02em;text-decoration:none;white-space:nowrap}
+.contact-phone-number:hover,.footer-phone-number:hover{text-decoration:underline}
+.footer-phone-number{color:#e5b08e;font-size:13px;margin:0 0 4px}
+@media(max-width:560px){.contact-callout{flex-wrap:wrap}.contact-phone-number{margin-left:58px}}
