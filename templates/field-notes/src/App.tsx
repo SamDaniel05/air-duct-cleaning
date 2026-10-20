@@ -12,9 +12,9 @@ const concepts = {
 } as const;
 type Key = keyof typeof concepts;
 const visualAssets: Record<Key,{about:string;matter:string;why:string;services:[string,string,string]}> = {
- "field-notes":{about:"https://www.allyearheating.com/wp-content/uploads/2023/03/Before-After-Ducts.jpg",matter:"https://images.squarespace-cdn.com/content/v1/62b5f34866b6ef23ccd2776a/528fee68-edbb-4ce6-8eaa-b37b161b5fcc/system%2Bcleaning%2Bbefore-after.jpg",why:"https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80",services:["https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1000&q=85","https://images.unsplash.com/photo-1600566753145-9d7c6c2d3f9a?auto=format&fit=crop&w=1000&q=85","https://images.unsplash.com/photo-1600607687857-9e6f8f5f3d9e?auto=format&fit=crop&w=1000&q=85"]}
+ "field-notes":{about:"https://www.allyearheating.com/wp-content/uploads/2023/03/Before-After-Ducts.jpg",matter:"https://images.squarespace-cdn.com/content/v1/62b5f34866b6ef23ccd2776a/528fee68-edbb-4ce6-8eaa-b37b161b5fcc/system%2Bcleaning%2Bbefore-after.jpg",why:"https://cleanairtechnologiesnj.com/wp-content/uploads/2025/09/vacuum-hose-cleaning-air-vent-1024x701.png",services:["https://www.acsacramentoca.com/assets/air-duct-cleaning-image-3.jpg?v=24f21d5b-a973-418b-b91b-e7ad33f11d09","https://www.prochembahamas.com/post/best-hvac-air-duct-cleaning-what-matters","https://www.titanair.com/air-duct-cleaning"]}
 };
-const comparisonImage = "https://storage.googleapis.com/msgsndr/QesknFNXZ0ROFYjz1H1F/media/657608efc906e64b10034282.jpeg";
+const comparisonImage = "https://coschedule.s3.amazonaws.com/163207/01c353e4-2f2a-435e-80b8-a1b2c20fcf74/Ducts%20-%20before%20and%20after.png";
 const services = [
  {title:"Residential air-duct cleaning",text:"Cleaning accessible supply and return ductwork, registers and related components within the agreed scope.",tag:"FOR THE HOME",icon:House},
  {title:"Commercial ventilation care",text:"Duct cleaning planned around the building, access requirements and agreed areas of work.",tag:"FOR WORKPLACES",icon:Building2},
@@ -36,8 +36,7 @@ function App(){
  const key: Key = "field-notes";
  const [menu,setMenu]=useState(false); const [faq,setFaq]=useState<number|null>(0); const [sent,setSent]=useState(false);
  const c=concepts[key];
- const imageFallbacks=["https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1000&q=85","https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=1000&q=85","https://images.unsplash.com/photo-1581092162384-8987c1d64718?auto=format&fit=crop&w=1000&q=85","https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=85","https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=85","https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=85"];
- const handleImageError=(event:SyntheticEvent<HTMLImageElement>)=>{const image=event.currentTarget;if(image.dataset.fallbackTried==="true"){image.style.visibility="hidden";image.removeAttribute("src");return;}image.dataset.fallbackTried="true";const images=Array.from(document.querySelectorAll<HTMLImageElement>(".site img"));const used=new Set(images.filter((item)=>item!==image).flatMap((item)=>[item.currentSrc,item.src,item.dataset.fallbackAssigned||""]));const fallback=imageFallbacks.find((url)=>!used.has(url));if(fallback){image.dataset.fallbackAssigned=fallback;image.src=fallback;}else{image.style.visibility="hidden";image.removeAttribute("src");}};
+ const handleImageError=(event:SyntheticEvent<HTMLImageElement>)=>{const image=event.currentTarget;image.style.visibility="hidden";image.removeAttribute("src");};
  useEffect(()=>{document.documentElement.dataset.theme=c.theme;document.title="Airduct — "+c.name;window.scrollTo({top:0,behavior:"auto"});setMenu(false);},[key,c]);
  useGSAP(()=>{gsap.utils.toArray<HTMLElement>(".reveal").forEach((el)=>{gsap.fromTo(el,{y:18,autoAlpha:0},{y:0,autoAlpha:1,duration:.65,ease:"power2.out",scrollTrigger:{trigger:el,start:"top 92%",once:true}})});
   const comparison=document.querySelector<HTMLElement>(".comparison-section");
