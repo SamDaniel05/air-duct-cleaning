@@ -351,3 +351,9 @@
   .mobile-call{padding:9px 10px}
   .menu-button{width:32px}
 }
+
+
+/* Keep the phone symbol and number visually grouped as one clear call action. */
+.contact-callout .contact-phone-number{display:inline-flex;align-items:center;gap:8px}
+.contact-callout .contact-phone-number svg{display:block;flex:0 0 16px;stroke:currentColor}
+@media(max-width:700px){.contact-callout .contact-phone-number{gap:8px}}
