@@ -12,7 +12,7 @@ const concepts = {
 } as const;
 type Key = keyof typeof concepts;
 const visualAssets: Record<Key,{about:string;matter:string;why:string;services:[string,string,string]}> = {
- "field-notes":{about:"https://www.allyearheating.com/wp-content/uploads/2023/03/Before-After-Ducts.jpg",matter:"https://images.squarespace-cdn.com/content/v1/62b5f34866b6ef23ccd2776a/528fee68-edbb-4ce6-8eaa-b37b161b5fcc/system%2Bcleaning%2Bbefore-after.jpg",why:"https://cleanairtechnologiesnj.com/wp-content/uploads/2025/09/vacuum-hose-cleaning-air-vent-1024x701.png",services:["https://www.acsacramentoca.com/assets/air-duct-cleaning-image-3.jpg?v=24f21d5b-a973-418b-b91b-e7ad33f11d09","https://www.prochembahamas.com/post/best-hvac-air-duct-cleaning-what-matters","https://www.titanair.com/air-duct-cleaning"]}
+ "field-notes":{about:"https://www.allyearheating.com/wp-content/uploads/2023/03/Before-After-Ducts.jpg",matter:"https://images.squarespace-cdn.com/content/v1/62b5f34866b6ef23ccd2776a/528fee68-edbb-4ce6-8eaa-b37b161b5fcc/system%2Bcleaning%2Bbefore-after.jpg",why:"https://cleanairtechnologiesnj.com/wp-content/uploads/2025/09/vacuum-hose-cleaning-air-vent-1024x701.png",services:["https://www.acsacramentoca.com/assets/air-duct-cleaning-image-3.jpg?v=24f21d5b-a973-418b-b91b-e7ad33f11d09","https://www.pluspoint.ae/uploads/Blogs/blog_629175444.webp","https://www.titanair.com/air-duct-cleaning"]}
 };
 const comparisonImage = "https://coschedule.s3.amazonaws.com/163207/01c353e4-2f2a-435e-80b8-a1b2c20fcf74/Ducts%20-%20before%20and%20after.png";
 const services = [
