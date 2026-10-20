@@ -259,3 +259,15 @@
 .comparison-pair .comparison-before,.comparison-pair .comparison-after,.comparison-pair .comparison-handle{display:none!important}
 @media(max-width:900px){.comparison-pair{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.comparison-tile img{height:clamp(180px,35vw,300px)}}
 @media(max-width:560px){.comparison-pair{grid-template-columns:1fr;gap:14px}.comparison-tile img{height:250px}}
+
+/* The original single static composite already contains both before and after views. */
+.comparison-section .comparison-grid{grid-template-columns:minmax(260px,.72fr) minmax(0,1.28fr)}
+.comparison-section .comparison-frame{display:flex;align-items:center;justify-content:center;width:100%;height:auto;min-height:0;aspect-ratio:auto;overflow:visible;background:transparent;border:0;box-shadow:none}
+.comparison-section .comparison-static-image{display:block;width:100%;height:auto;max-height:560px;object-fit:contain;object-position:center}
+.comparison-section .comparison-tile{display:none!important}
+.comparison-section .comparison-hint{display:none!important}
+@media(max-width:900px){
+ .comparison-section .comparison-grid{grid-template-columns:1fr;gap:25px}
+ .comparison-section .comparison-frame{justify-content:center}
+ .comparison-section .comparison-static-image{width:100%;max-height:none;max-width:760px;margin-inline:auto}
+}
