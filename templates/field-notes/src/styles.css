@@ -318,3 +318,36 @@
   .contact-callout{grid-template-columns:34px minmax(0,1fr);column-gap:12px}
   .contact-callout .contact-phone-number{font-size:14px}
 }
+
+
+/* Direct-call navigation: visible on desktop and a compact tap target on mobile. */
+.nav-phone{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:12px 15px;border:1px solid var(--line);border-radius:3px;
+  color:var(--ink);font-size:13px;font-weight:750;letter-spacing:.01em;
+  text-decoration:none;white-space:nowrap;transition:background .2s,color .2s,border-color .2s
+}
+.nav-phone:hover{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.mobile-call{display:none}
+@media(max-width:900px){
+  .nav-phone{display:none}
+  .mobile-call{
+    display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;
+    padding:10px 12px;margin-left:auto;margin-right:8px;
+    border-radius:3px;background:var(--ink);color:var(--bg);
+    font-size:12px;font-weight:750;line-height:1;text-decoration:none;white-space:nowrap
+  }
+  .mobile-call span{margin-left:6px}
+  .mobile-estimate{display:none!important}
+  .header{gap:8px}
+}
+@media(max-width:560px){
+  .mobile-call{padding:10px 11px;margin-right:4px;font-size:12px}
+  .mobile-call span{display:none}
+}
+@media(max-width:360px){
+  .brand-name{font-size:14px}
+  .brand-mark{width:35px;height:35px}
+  .mobile-call{padding:9px 10px}
+  .menu-button{width:32px}
+}
