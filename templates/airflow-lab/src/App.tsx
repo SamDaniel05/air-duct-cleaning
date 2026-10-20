@@ -12,7 +12,7 @@ const concepts = {
 } as const;
 type Key = keyof typeof concepts;
 const visualAssets: Record<Key,{about:string;matter:string;why:string;services:[string,string,string]}> = {
- "airflow-lab":{about:matter:"https://dryerventcleaninglamarque.com/assets/img/air-duct-clean-call.jpg",why:"https://ottawafurnaceparts.ca/cdn/shop/collections/duct-clean-and-dirty-duct-and-write-before-and-after_1200x1200.png?v=1762137997",services:["https://images.unsplash.com/photo-1581092162384-8987c1d64718?auto=format&fit=crop&w=1000&q=85","https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1000&q=85","https://images.unsplash.com/photo-1581092919535-7146ff1a590b?auto=format&fit=crop&w=1000&q=85"]},
+ "airflow-lab":{about:"https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=1000&q=85",matter:"https://dryerventcleaninglamarque.com/assets/img/air-duct-clean-call.jpg",why:"https://ottawafurnaceparts.ca/cdn/shop/collections/duct-clean-and-dirty-duct-and-write-before-and-after_1200x1200.png?v=1762137997",services:["https://images.unsplash.com/photo-1581092162384-8987c1d64718?auto=format&fit=crop&w=1000&q=85","https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1000&q=85","https://images.unsplash.com/photo-1581092919535-7146ff1a590b?auto=format&fit=crop&w=1000&q=85"]},
 };
 const comparisonImage = "https://storage.googleapis.com/msgsndr/QesknFNXZ0ROFYjz1H1F/media/657608efc906e64b10034282.jpeg";
 const services = [
