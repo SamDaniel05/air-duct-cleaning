@@ -12,9 +12,9 @@ const concepts = {
 } as const;
 type Key = keyof typeof concepts;
 const visualAssets: Record<Key,{about:string;matter:string;why:string;services:[string,string,string]}> = {
- "airflow-lab":{about:"https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=1000&q=85",matter:"https://dryerventcleaninglamarque.com/assets/img/air-duct-clean-call.jpg",why:"https://ottawafurnaceparts.ca/cdn/shop/collections/duct-clean-and-dirty-duct-and-write-before-and-after_1200x1200.png?v=1762137997",services:["https://images.unsplash.com/photo-1581092162384-8987c1d64718?auto=format&fit=crop&w=1000&q=85","https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1000&q=85","https://images.unsplash.com/photo-1581092919535-7146ff1a590b?auto=format&fit=crop&w=1000&q=85"]},
+ "airflow-lab":{about:"https://emersonairnj.com/assets/duct-service-1-DOhzKEV3.jpg",matter:"https://www.socalgreenairandchimney.com/images/blog/professional-air-duct-cleaning-los-angeles.jpg",why:"https://cdn.prod.website-files.com/67862cb19c5acbe080542da5/68131bdf29cc0e966aebb82a_DuctCleaning_2.webp",services:["https://dryerducks.com/images/adc.png","https://airductcleaninghillsborobeach.com/_resources/images/page/1_246.webp","https://www.superiorairduct.com/blog/pittsburgh-air-duct-cleaning-reviews-guide"]}
 };
-const comparisonImage = "https://storage.googleapis.com/msgsndr/QesknFNXZ0ROFYjz1H1F/media/657608efc906e64b10034282.jpeg";
+const comparisonImage = "https://i.insider.com/60a3d393f27b4c00194450a4?format=jpeg&width=1200";
 const services = [
  {title:"Residential air-duct cleaning",text:"Cleaning accessible supply and return ductwork, registers and related components within the agreed scope.",tag:"FOR THE HOME",icon:House},
  {title:"Commercial ventilation care",text:"Duct cleaning planned around the building, access requirements and agreed areas of work.",tag:"FOR WORKPLACES",icon:Building2},
@@ -36,8 +36,7 @@ function App(){
  const key: Key = "airflow-lab";
  const [menu,setMenu]=useState(false); const [faq,setFaq]=useState<number|null>(0); const [sent,setSent]=useState(false);
  const c=concepts[key];
- const imageFallbacks=["https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1000&q=85","https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=1000&q=85","https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?auto=format&fit=crop&w=1000&q=85","https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=85","https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=85","https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1000&q=85"];
- const handleImageError=(event:SyntheticEvent<HTMLImageElement>)=>{const image=event.currentTarget;if(image.dataset.fallbackTried==="true"){image.style.visibility="hidden";image.removeAttribute("src");return;}image.dataset.fallbackTried="true";const images=Array.from(document.querySelectorAll<HTMLImageElement>(".site img"));const used=new Set(images.filter((item)=>item!==image).flatMap((item)=>[item.currentSrc,item.src,item.dataset.fallbackAssigned||""]));const fallback=imageFallbacks.find((url)=>!used.has(url));if(fallback){image.dataset.fallbackAssigned=fallback;image.src=fallback;}else{image.style.visibility="hidden";image.removeAttribute("src");}};
+ const handleImageError=(event:SyntheticEvent<HTMLImageElement>)=>{const image=event.currentTarget;image.style.visibility="hidden";image.removeAttribute("src");};
  useEffect(()=>{document.documentElement.dataset.theme=c.theme;document.title="Airduct — "+c.name;window.scrollTo({top:0,behavior:"auto"});setMenu(false);},[key,c]);
  useGSAP(()=>{gsap.utils.toArray<HTMLElement>(".reveal").forEach((el)=>{gsap.fromTo(el,{y:18,autoAlpha:0},{y:0,autoAlpha:1,duration:.65,ease:"power2.out",scrollTrigger:{trigger:el,start:"top 92%",once:true}})});
   const comparison=document.querySelector<HTMLElement>(".comparison-section");
