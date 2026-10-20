@@ -424,3 +424,7 @@
 .theme-lab .footer .footer-column>a:hover,
 .theme-lab .footer .footer-bottom a:hover{color:#c5f169!important}
 .theme-lab .footer .footer-estimate{background:#c5f169!important;color:#111718!important}
+
+
+/* Fix Airflow Lab service-label contrast: keep the labels legible on the dark theme. */
+.theme-lab .service-card-image>span{background:#111718!important;color:#c5f169!important;z-index:2;text-shadow:none!important;}
