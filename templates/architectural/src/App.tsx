@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ArrowRight, ArrowUpRight, Menu, X, Check, Plus, Minus, Wind, ShieldCheck, House, Building2, CircleHelp } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Menu, X, Check, Plus, Minus, Wind, Phone, ShieldCheck, House, Building2, CircleHelp } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
