@@ -14,7 +14,7 @@ type Key = keyof typeof concepts;
 const processImages: Record<Key, [string, string, string]> = {
  "field-notes": [
   "https://www.schornsteinfeger.de/sites/default/files/ziv-leistungen-lueftungsanlage-kamerainspektion.jpg",
-  "https://cdn.prod.website-files.com/678a6ffbc04cfe4f45f44ae6/680b14a6b77eb7c331b22a51_Duct%20Cleaning1.webp",
+  "https://services6.imagehosting.space/images/gallery/contractors/heating-cooling/vx1_5789.jpg",
   "https://image13.zibster.com/10309/10_20230113161025_11341380_xlarge.jpg"
  ]
 };
