@@ -39,6 +39,30 @@ function App(){
  const handleImageError=(event:SyntheticEvent<HTMLImageElement>)=>{const image=event.currentTarget;if(image.dataset.fallbackApplied==="true")return;image.dataset.fallbackApplied="true";image.onerror=null;image.src="https://cleanairtechnologiesnj.com/wp-content/uploads/2025/09/vacuum-hose-cleaning-air-vent-1024x701.png";;};
  useEffect(()=>{document.documentElement.dataset.theme=c.theme;document.title="Airduct — "+c.name;window.scrollTo({top:0,behavior:"auto"});setMenu(false);},[key,c]);
  useGSAP(()=>{gsap.utils.toArray<HTMLElement>(".reveal").forEach((el)=>{gsap.fromTo(el,{y:18,autoAlpha:0},{y:0,autoAlpha:1,duration:.65,ease:"power2.out",scrollTrigger:{trigger:el,start:"top 92%",once:true}})});
+  const storySection=document.querySelector<HTMLElement>("#why");
+  const storyHeading=storySection?.querySelector<HTMLElement>(".why-heading");
+  const storyImage=storySection?.querySelector<HTMLImageElement>(".why-side-image img");
+  const storyPrinciples=storySection?.querySelector<HTMLElement>(".principles");
+  const principleItems=storySection?gsap.utils.toArray<HTMLElement>(".principle",storySection):[];
+  if(storySection&&storyHeading&&storyImage&&storyPrinciples&&principleItems.length>=4&&window.matchMedia("(min-width: 1025px)").matches&&!window.matchMedia("(prefers-reduced-motion: reduce)").matches){
+   const imageSequence=[visualAssets[key].why,visualAssets[key].services[0],visualAssets[key].services[1],visualAssets[key].services[2]];
+   storyPrinciples.style.display="flex";
+   storyPrinciples.style.flexWrap="nowrap";
+   storyPrinciples.style.overflow="hidden";
+   storyPrinciples.style.gap="24px";
+   principleItems.forEach((item)=>{item.style.flex="0 0 calc(33.333% - 16px)";item.style.marginRight="0";});
+   gsap.set(principleItems,{xPercent:110,autoAlpha:0});
+   gsap.set(principleItems[0],{xPercent:0,autoAlpha:1});
+   const storyTl=gsap.timeline({scrollTrigger:{trigger:storySection,start:"top top",end:()=>"+="+Math.round(window.innerHeight*2.4),scrub:0.6,pin:true,anticipatePin:1,invalidateOnRefresh:true}});
+   principleItems.forEach((item,index)=>{
+    if(index===0)return;
+    storyTl.to(principleItems[index-1],{xPercent:-115,autoAlpha:0,duration:1,ease:"none"},index-1)
+      .fromTo(item,{xPercent:110,autoAlpha:0},{xPercent:0,autoAlpha:1,duration:1,ease:"none"},index-1)
+      .to(storyImage,{opacity:0,duration:0.15},index-1)
+      .add(()=>{storyImage.src=imageSequence[index];},index-1+0.15)
+      .to(storyImage,{opacity:1,duration:0.2},index-1+0.2);
+   });
+  }
   const comparison=document.querySelector<HTMLElement>(".comparison-section");
   const photo=document.querySelector<HTMLElement>(".comparison-before");
   const handle=document.querySelector<HTMLElement>(".comparison-handle");
