@@ -524,3 +524,61 @@
  .process-stage-window .process-step{padding:22px}
  .process-stage-window .process-visual{height:clamp(170px,54vw,260px)}
 }
+
+/* Clear Living Services UI fix: keep the stage animation, remove nested narrow columns. */
+.services-feature-layout .services-intro{min-width:0;width:100%}
+.services-feature-layout .services-intro .section-heading{
+ display:flex;
+ flex-direction:column;
+ align-items:flex-start;
+ justify-content:center;
+ gap:clamp(18px,2vw,26px);
+ width:100%;
+ max-width:100%;
+ min-width:0;
+ margin:0;
+ grid-template-columns:minmax(0,1fr);
+}
+.services-feature-layout .services-intro .section-heading h2{
+ display:block;
+ width:100%;
+ max-width:100%;
+ min-width:0;
+ margin:0;
+ font-size:clamp(42px,4.25vw,66px);
+ line-height:1.02;
+ letter-spacing:-.055em;
+ overflow-wrap:normal;
+ word-break:normal;
+ hyphens:none;
+}
+.services-feature-layout .services-intro .section-heading h2 em{display:inline}
+.services-feature-layout .services-intro .section-heading>p{
+ display:block;
+ width:100%;
+ max-width:46ch;
+ min-width:0;
+ margin:0;
+ font-size:clamp(14px,1.05vw,16px);
+ line-height:1.8;
+ overflow-wrap:normal;
+ word-break:normal;
+}
+@media (min-width:1025px){
+ .services-feature-layout{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,4vw,64px);align-items:center}
+ .services-feature-layout .services-intro .section-heading h2{font-size:clamp(44px,4.25vw,66px)}
+ .service-stage-window{min-width:0;width:100%}
+ .service-stage-window .service-card{grid-template-columns:minmax(0,1fr) minmax(0,.9fr)}
+}
+@media (max-width:1024px){
+ .services-feature-layout{display:grid;grid-template-columns:minmax(0,1fr);gap:26px}
+ .services-feature-layout .services-intro .section-heading{margin:42px 0 4px;gap:20px}
+ .services-feature-layout .services-intro .section-heading h2{font-size:clamp(40px,6vw,60px);max-width:760px}
+ .services-feature-layout .services-intro .section-heading>p{max-width:60ch}
+}
+@media (max-width:640px){
+ .services-feature-layout{gap:22px}
+ .services-feature-layout .services-intro .section-heading{margin:30px 0 0;gap:16px}
+ .services-feature-layout .services-intro .section-heading h2{font-size:clamp(36px,9.5vw,50px);line-height:1.04}
+ .services-feature-layout .services-intro .section-heading>p{font-size:14px;line-height:1.75}
+}
