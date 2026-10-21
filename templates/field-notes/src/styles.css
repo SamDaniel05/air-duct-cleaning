@@ -424,3 +424,32 @@
 .theme-lab .footer .footer-column>a:hover,
 .theme-lab .footer .footer-bottom a:hover{color:#c5f169!important}
 .theme-lab .footer .footer-estimate{background:#c5f169!important;color:#111718!important}
+
+/* Services: pinned desktop stage sequence. Kept separate from the process reveal below. */
+@media (min-width:1025px){
+ .services-feature-layout{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:clamp(28px,4.5vw,72px);align-items:stretch;min-height:470px}
+ .services-feature-layout .services-intro{display:flex;align-items:center;min-width:0}
+ .services-feature-layout .section-heading{margin:0;max-width:520px}
+ .services-feature-layout .section-heading h2{font-size:clamp(36px,4vw,60px);line-height:1.02}
+ .services-feature-layout .section-heading p{max-width:440px}
+ .service-stage-window{min-width:0;min-height:470px}
+ .service-stage-window .service-grid{display:block;position:relative;height:470px;margin:0}
+ .service-stage-window .service-card{position:absolute;inset:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.92fr);gap:0;height:100%;min-height:0;overflow:hidden;background:var(--surface);border-top:1px solid var(--line)}
+ .service-stage-window .service-card-image{height:100%;min-height:0;aspect-ratio:auto;position:relative;overflow:hidden}
+ .service-stage-window .service-card-image img{height:100%;width:100%;object-fit:cover}
+ .service-stage-window .service-card-body{display:flex;flex-direction:column;align-items:flex-start;min-width:0;padding:clamp(20px,2.2vw,34px);gap:0}
+ .service-stage-window .service-card-body .service-icon{margin-bottom:28px}
+ .service-stage-window .service-card-body h3{font-size:clamp(22px,2.15vw,32px);line-height:1.12;margin-bottom:14px}
+ .service-stage-window .service-card-body p{font-size:13px;line-height:1.75}
+ .service-stage-window .service-card-body>a{margin-top:auto}
+}
+.process-step{overflow:hidden}
+.process-visual{width:100%;height:clamp(125px,14vw,178px);margin:22px 0 0;position:relative;overflow:hidden;background:var(--sage);isolation:isolate}
+.process-visual img{display:block;width:100%;height:100%;object-fit:cover;transform:scale(1.045);will-change:transform}
+.process-step .step-line{transform-origin:left center}
+@media(max-width:900px){
+ .process-visual{height:clamp(145px,48vw,230px);margin-top:18px}
+ .process-grid{margin-top:34px}
+ .process-step{min-height:0}
+ .process-step h3{margin-top:0}
+}
