@@ -20,6 +20,28 @@ jobs:
         run: npm install
       - name: Type-check and build
         run: npm run build
+      - name: Build templates and run browser smoke tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p .qa-site/air-duct-cleaning
+          for template in architectural airflow-lab clear-living field-notes; do
+            echo "Preparing browser test for $template"
+            npm --prefix "templates/$template" install
+            npm --prefix "templates/$template" run build
+            mkdir -p ".qa-site/air-duct-cleaning/$template"
+            cp -R "templates/$template/dist/." ".qa-site/air-duct-cleaning/$template/"
+          done
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+          python3 -m http.server 4178 --bind 127.0.0.1 --directory .qa-site > "$RUNNER_TEMP/airduct-qa-server.log" 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:4178/air-duct-cleaning/architectural/ > /dev/null; then break; fi
+            sleep 1
+          done
+          node scripts/browser-smoke-tests.mjs
 
   build-independent-templates:
     runs-on: ubuntu-latest
