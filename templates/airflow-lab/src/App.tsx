@@ -46,25 +46,24 @@ function App(){
  const handleImageError=(event:SyntheticEvent<HTMLImageElement>)=>{const image=event.currentTarget;if(image.dataset.fallbackApplied==="true")return;image.dataset.fallbackApplied="true";image.onerror=null;image.src="https://cleanairtechnologiesnj.com/wp-content/uploads/2025/09/vacuum-hose-cleaning-air-vent-1024x701.png";;};
  useEffect(()=>{document.documentElement.dataset.theme=c.theme;document.title="Airduct — "+c.name;window.scrollTo({top:0,behavior:"auto"});setMenu(false);},[key,c]);
  useGSAP(()=>{gsap.utils.toArray<HTMLElement>(".reveal:not(.service-card):not(.process-step)").forEach((el)=>{gsap.fromTo(el,{y:18,autoAlpha:0},{y:0,autoAlpha:1,duration:.65,ease:"power2.out",scrollTrigger:{trigger:el,start:"top 92%",once:true}})});
-  const serviceSection=document.querySelector<HTMLElement>("#services");
-  const serviceGrid=serviceSection?.querySelector<HTMLElement>(".service-grid");
-  const serviceCards=serviceSection?gsap.utils.toArray<HTMLElement>(".service-card",serviceSection):[];
-  if(serviceGrid&&serviceCards.length&&!window.matchMedia("(prefers-reduced-motion: reduce)").matches){
-   gsap.fromTo(serviceCards,{y:34,autoAlpha:0},{y:0,autoAlpha:1,duration:0.72,stagger:0.15,ease:"power3.out",scrollTrigger:{trigger:serviceGrid,start:"top 78%",once:true}});
-   const serviceImages=serviceCards.map((card)=>card.querySelector<HTMLElement>(".service-card-image")).filter((node):node is HTMLElement=>node!==null);
-   gsap.fromTo(serviceImages,{clipPath:"inset(0 0 18% 0)"},{clipPath:"inset(0 0 0 0)",duration:0.78,stagger:0.15,ease:"power2.inOut",scrollTrigger:{trigger:serviceGrid,start:"top 78%",once:true}});
-  }
-  const processStory=document.querySelector<HTMLElement>("#process .process-story");
-  const processCards=processStory?gsap.utils.toArray<HTMLElement>(".process-step",processStory):[];
-  if(processStory&&processCards.length>=2&&window.matchMedia("(min-width: 1025px)").matches&&!window.matchMedia("(prefers-reduced-motion: reduce)").matches){
-   gsap.set(processCards,{xPercent:112,autoAlpha:0});
-   gsap.set(processCards[0],{xPercent:0,autoAlpha:1});
-   const processTl=gsap.timeline({scrollTrigger:{trigger:processStory,start:"top 105px",end:()=>"+="+Math.round(window.innerHeight*(processCards.length-1)*1.08),scrub:0.62,pin:true,anticipatePin:1,invalidateOnRefresh:true}});
-   processCards.forEach((card,index)=>{
+  const servicesFeature=document.querySelector<HTMLElement>("#services .services-feature-layout");
+  const serviceGrid=servicesFeature?.querySelector<HTMLElement>(".service-grid");
+  const serviceCards=servicesFeature?gsap.utils.toArray<HTMLElement>(".service-card",servicesFeature):[];
+  if(servicesFeature&&serviceGrid&&serviceCards.length>=2&&window.matchMedia("(min-width: 1025px)").matches&&!window.matchMedia("(prefers-reduced-motion: reduce)").matches){
+   serviceGrid.style.display="block";
+   serviceGrid.style.position="relative";
+   serviceGrid.style.height="min(470px, 56vh)";
+   serviceCards.forEach((card)=>{card.style.position="absolute";card.style.inset="0";card.style.height="100%";});
+   gsap.set(serviceCards,{xPercent:112,autoAlpha:0});
+   gsap.set(serviceCards[0],{xPercent:0,autoAlpha:1});
+   const servicesTl=gsap.timeline({scrollTrigger:{trigger:servicesFeature,start:"top 120px",end:()=>"+="+Math.round(window.innerHeight*(serviceCards.length-1)*1.05),scrub:0.65,pin:true,anticipatePin:1,invalidateOnRefresh:true}});
+   serviceCards.forEach((card,index)=>{
     if(index===0)return;
-    processTl.to(processCards[index-1],{xPercent:-112,autoAlpha:0,duration:1,ease:"none"},index-1)
+    servicesTl.to(serviceCards[index-1],{xPercent:-112,autoAlpha:0,duration:1,ease:"none"},index-1)
       .fromTo(card,{xPercent:112,autoAlpha:0},{xPercent:0,autoAlpha:1,duration:1,ease:"none"},index-1);
    });
+  } else if(serviceGrid&&serviceCards.length){
+   gsap.fromTo(serviceCards,{y:24,autoAlpha:0},{y:0,autoAlpha:1,duration:0.6,stagger:0.1,ease:"power2.out",scrollTrigger:{trigger:serviceGrid,start:"top 85%",once:true}});
   }
   const comparison=document.querySelector<HTMLElement>(".comparison-section");
   const photo=document.querySelector<HTMLElement>(".comparison-before");
