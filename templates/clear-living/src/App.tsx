@@ -13,9 +13,9 @@ const concepts = {
 type Key = keyof typeof concepts;
 const processImages: Record<Key, [string, string, string]> = {
  "clear-living": [
-  "/air-duct-cleaning/clear-living/images/process-1.svg",
-  "/air-duct-cleaning/clear-living/images/process-2.svg",
-  "/air-duct-cleaning/clear-living/images/process-3.svg"
+  `${import.meta.env.BASE_URL}images/process-1.svg`,
+  `${import.meta.env.BASE_URL}images/process-2.svg`,
+  `${import.meta.env.BASE_URL}images/process-3.svg`
  ]
 };
 const visualAssets: Record<Key,{about:string;matter:string;why:string;services:[string,string,string]}> = {
@@ -45,25 +45,31 @@ function App(){
  const c=concepts[key];
  const handleImageError=(event:SyntheticEvent<HTMLImageElement>)=>{const image=event.currentTarget;image.onerror=null;image.style.visibility="hidden";};
  useEffect(()=>{document.documentElement.dataset.theme=c.theme;document.title="Airduct — "+c.name;window.scrollTo({top:0,behavior:"auto"});setMenu(false);},[key,c]);
- useGSAP(()=>{gsap.utils.toArray<HTMLElement>(".reveal:not(.service-card):not(.process-step)").forEach((el)=>{gsap.fromTo(el,{y:18,autoAlpha:0},{y:0,autoAlpha:1,duration:.65,ease:"power2.out",scrollTrigger:{trigger:el,start:"top 92%",once:true}})});
-  const servicesFeature=document.querySelector<HTMLElement>("#services .services-feature-layout");
-  const serviceGrid=servicesFeature?.querySelector<HTMLElement>(".service-grid");
-  const serviceCards=servicesFeature?gsap.utils.toArray<HTMLElement>(".service-card",servicesFeature):[];
-  if(servicesFeature&&serviceGrid&&serviceCards.length>=2&&window.matchMedia("(min-width: 1025px)").matches&&!window.matchMedia("(prefers-reduced-motion: reduce)").matches){
-   serviceGrid.style.display="block";
-   serviceGrid.style.position="relative";
-   serviceGrid.style.height="min(470px, 56vh)";
-   serviceCards.forEach((card)=>{card.style.position="absolute";card.style.inset="0";card.style.height="100%";});
-   gsap.set(serviceCards,{xPercent:112,autoAlpha:0});
-   gsap.set(serviceCards[0],{xPercent:0,autoAlpha:1});
-   const servicesTl=gsap.timeline({scrollTrigger:{trigger:servicesFeature,start:"top 120px",end:()=>"+="+Math.round(window.innerHeight*(serviceCards.length-1)*1.05),scrub:0.65,pin:true,anticipatePin:1,invalidateOnRefresh:true}});
-   serviceCards.forEach((card,index)=>{
+ useGSAP(()=>{
+  gsap.utils.toArray<HTMLElement>(".reveal:not(.service-card):not(.process-step)").forEach((el)=>{
+   gsap.fromTo(el,{y:18,autoAlpha:0},{y:0,autoAlpha:1,duration:.65,ease:"power2.out",scrollTrigger:{trigger:el,start:"top 92%",once:true}});
+  });
+  // Services remains a normal responsive grid, with only a light staggered reveal.
+  const serviceGrid=document.querySelector<HTMLElement>("#services .service-grid");
+  const serviceCards=serviceGrid?gsap.utils.toArray<HTMLElement>(".service-card",serviceGrid):[];
+  if(serviceGrid&&serviceCards.length&&!window.matchMedia("(prefers-reduced-motion: reduce)").matches){
+   gsap.fromTo(serviceCards,{y:24,autoAlpha:0},{y:0,autoAlpha:1,duration:.62,stagger:.12,ease:"power2.out",scrollTrigger:{trigger:serviceGrid,start:"top 84%",once:true}});
+  }
+  // How it works: pin the story on desktop and move each complete stage right-to-left.
+  const processStory=document.querySelector<HTMLElement>("#process .process-story");
+  const processGrid=processStory?.querySelector<HTMLElement>(".process-grid");
+  const processCards=processStory?gsap.utils.toArray<HTMLElement>(".process-step",processStory):[];
+  const desktopStory=window.matchMedia("(min-width: 1025px)").matches;
+  const reducedMotion=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(processStory&&processGrid&&processCards.length>=2&&desktopStory&&!reducedMotion){
+   gsap.set(processCards,{xPercent:112,autoAlpha:0});
+   gsap.set(processCards[0],{xPercent:0,autoAlpha:1});
+   const processTl=gsap.timeline({scrollTrigger:{trigger:processStory,start:"top 108px",end:()=>"+="+Math.round(window.innerHeight*(processCards.length-1)*1.08),scrub:0.62,pin:true,anticipatePin:1,invalidateOnRefresh:true}});
+   processCards.forEach((card,index)=>{
     if(index===0)return;
-    servicesTl.to(serviceCards[index-1],{xPercent:-112,autoAlpha:0,duration:1,ease:"none"},index-1)
+    processTl.to(processCards[index-1],{xPercent:-112,autoAlpha:0,duration:1,ease:"none"},index-1)
       .fromTo(card,{xPercent:112,autoAlpha:0},{xPercent:0,autoAlpha:1,duration:1,ease:"none"},index-1);
    });
-  } else if(serviceGrid&&serviceCards.length){
-   gsap.fromTo(serviceCards,{y:24,autoAlpha:0},{y:0,autoAlpha:1,duration:0.6,stagger:0.1,ease:"power2.out",scrollTrigger:{trigger:serviceGrid,start:"top 85%",once:true}});
   }
   const comparison=document.querySelector<HTMLElement>(".comparison-section");
   const photo=document.querySelector<HTMLElement>(".comparison-before");

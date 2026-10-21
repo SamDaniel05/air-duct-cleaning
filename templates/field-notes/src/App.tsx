@@ -13,9 +13,9 @@ const concepts = {
 type Key = keyof typeof concepts;
 const processImages: Record<Key, [string, string, string]> = {
  "field-notes": [
-  "/air-duct-cleaning/field-notes/images/process-1.svg",
-  "/air-duct-cleaning/field-notes/images/process-2.svg",
-  "/air-duct-cleaning/field-notes/images/process-3.svg"
+  `${import.meta.env.BASE_URL}images/process-1.svg`,
+  `${import.meta.env.BASE_URL}images/process-2.svg`,
+  `${import.meta.env.BASE_URL}images/process-3.svg`
  ]
 };
 const visualAssets: Record<Key,{about:string;matter:string;why:string;services:[string,string,string]}> = {
@@ -45,21 +45,26 @@ function App(){
  const c=concepts[key];
  const handleImageError=(event:SyntheticEvent<HTMLImageElement>)=>{const image=event.currentTarget;image.onerror=null;image.style.visibility="hidden";};
  useEffect(()=>{document.documentElement.dataset.theme=c.theme;document.title="Airduct — "+c.name;window.scrollTo({top:0,behavior:"auto"});setMenu(false);},[key,c]);
- useGSAP(()=>{gsap.utils.toArray<HTMLElement>(".reveal:not(.service-card):not(.process-step)").forEach((el)=>{gsap.fromTo(el,{y:18,autoAlpha:0},{y:0,autoAlpha:1,duration:.65,ease:"power2.out",scrollTrigger:{trigger:el,start:"top 92%",once:true}})});
-  const serviceSection=document.querySelector<HTMLElement>("#services");
-  const serviceGrid=serviceSection?.querySelector<HTMLElement>(".service-grid");
-  const serviceCards=serviceSection?gsap.utils.toArray<HTMLElement>(".service-card",serviceSection):[];
+ useGSAP(()=>{
+  gsap.utils.toArray<HTMLElement>(".reveal:not(.service-card):not(.process-step)").forEach((el)=>{
+   gsap.fromTo(el,{y:18,autoAlpha:0},{y:0,autoAlpha:1,duration:.65,ease:"power2.out",scrollTrigger:{trigger:el,start:"top 92%",once:true}});
+  });
+  // Services remains a normal responsive grid, with only a light staggered reveal.
+  const serviceGrid=document.querySelector<HTMLElement>("#services .service-grid");
+  const serviceCards=serviceGrid?gsap.utils.toArray<HTMLElement>(".service-card",serviceGrid):[];
   if(serviceGrid&&serviceCards.length&&!window.matchMedia("(prefers-reduced-motion: reduce)").matches){
-   gsap.fromTo(serviceCards,{y:34,autoAlpha:0},{y:0,autoAlpha:1,duration:0.72,stagger:0.15,ease:"power3.out",scrollTrigger:{trigger:serviceGrid,start:"top 78%",once:true}});
-   const serviceImages=serviceCards.map((card)=>card.querySelector<HTMLElement>(".service-card-image")).filter((node):node is HTMLElement=>node!==null);
-   gsap.fromTo(serviceImages,{clipPath:"inset(0 0 18% 0)"},{clipPath:"inset(0 0 0 0)",duration:0.78,stagger:0.15,ease:"power2.inOut",scrollTrigger:{trigger:serviceGrid,start:"top 78%",once:true}});
+   gsap.fromTo(serviceCards,{y:24,autoAlpha:0},{y:0,autoAlpha:1,duration:.62,stagger:.12,ease:"power2.out",scrollTrigger:{trigger:serviceGrid,start:"top 84%",once:true}});
   }
+  // How it works: pin the story on desktop and move each complete stage right-to-left.
   const processStory=document.querySelector<HTMLElement>("#process .process-story");
+  const processGrid=processStory?.querySelector<HTMLElement>(".process-grid");
   const processCards=processStory?gsap.utils.toArray<HTMLElement>(".process-step",processStory):[];
-  if(processStory&&processCards.length>=2&&window.matchMedia("(min-width: 1025px)").matches&&!window.matchMedia("(prefers-reduced-motion: reduce)").matches){
+  const desktopStory=window.matchMedia("(min-width: 1025px)").matches;
+  const reducedMotion=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(processStory&&processGrid&&processCards.length>=2&&desktopStory&&!reducedMotion){
    gsap.set(processCards,{xPercent:112,autoAlpha:0});
    gsap.set(processCards[0],{xPercent:0,autoAlpha:1});
-   const processTl=gsap.timeline({scrollTrigger:{trigger:processStory,start:"top 105px",end:()=>"+="+Math.round(window.innerHeight*(processCards.length-1)*1.08),scrub:0.62,pin:true,anticipatePin:1,invalidateOnRefresh:true}});
+   const processTl=gsap.timeline({scrollTrigger:{trigger:processStory,start:"top 108px",end:()=>"+="+Math.round(window.innerHeight*(processCards.length-1)*1.08),scrub:0.62,pin:true,anticipatePin:1,invalidateOnRefresh:true}});
    processCards.forEach((card,index)=>{
     if(index===0)return;
     processTl.to(processCards[index-1],{xPercent:-112,autoAlpha:0,duration:1,ease:"none"},index-1)
