@@ -532,3 +532,43 @@
  #services .service-stage-window .service-card-image{height:clamp(190px,58vw,270px)}
  #process .process-visual{height:clamp(170px,54vw,240px)}
 }
+
+/* Responsive repair: prevent service/process copy and stage cards from shrinking into slivers. */
+.services-feature-layout{display:grid;grid-template-columns:minmax(0,1fr);gap:30px;min-width:0}
+.services-feature-layout .services-intro,.services-feature-layout .section-heading{min-width:0;width:100%;max-width:100%}
+.services-feature-layout .section-heading h2{max-width:100%;overflow-wrap:normal;word-break:normal}
+.services-feature-layout .section-heading p{max-width:58ch;width:100%;overflow-wrap:break-word}
+.service-stage-window,.service-stage-window .service-grid{min-width:0;width:100%}
+.service-stage-window .service-card{min-width:0;max-width:100%;box-sizing:border-box}
+.service-stage-window .service-card-image img{display:block;width:100%;height:100%;object-fit:cover}
+.process-story{min-width:0;width:100%}
+.process-intro,.process-intro .section-heading{min-width:0;width:100%;max-width:100%}
+.process-intro .section-heading h2{max-width:100%;overflow-wrap:normal;word-break:normal}
+.process-intro .section-heading p{max-width:58ch;width:100%;overflow-wrap:break-word}
+.process-stage-window,.process-stage-window .process-grid{min-width:0;width:100%}
+.process-visual{min-width:0;overflow:hidden}
+.process-visual img{display:block;width:100%;height:100%;object-fit:cover}
+@media(min-width:1025px){
+ .services-feature-layout{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:center;gap:clamp(28px,4vw,64px)}
+ .services-feature-layout .services-intro{display:block}
+ .service-stage-window{height:clamp(390px,38vw,500px);min-height:0;overflow:hidden}
+ .service-stage-window .service-grid{height:100%;position:relative;margin:0}
+ .service-stage-window .service-card{height:100%;position:absolute;inset:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);overflow:hidden}
+ .service-stage-window .service-card-image{height:100%;min-height:0;aspect-ratio:auto}
+ .service-stage-window .service-card-body{min-width:0;padding:clamp(18px,2vw,32px)}
+ .process-story{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(28px,4vw,64px);align-items:center}
+ .process-stage-window{min-width:0;height:clamp(400px,42vw,520px);position:relative;overflow:hidden}
+ .process-stage-window .process-grid{height:100%;position:relative;margin:0}
+ .process-stage-window .process-step{position:absolute;inset:0;height:100%;min-height:0;box-sizing:border-box;overflow:hidden}
+ .process-stage-window .process-visual{height:clamp(160px,18vw,230px)}
+}
+@media(max-width:1024px){
+ .services-feature-layout,.process-story{display:grid;grid-template-columns:minmax(0,1fr);gap:24px}
+ .service-stage-window,.process-stage-window{height:auto;min-height:0;overflow:visible}
+ .service-stage-window .service-grid,.process-stage-window .process-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;height:auto;margin:0}
+ .service-stage-window .service-card,.process-stage-window .process-step{position:relative;inset:auto;transform:none!important;opacity:1!important;visibility:visible!important;height:auto;min-height:0;display:grid;grid-template-columns:minmax(0,1fr);overflow:hidden}
+ .service-stage-window .service-card-image{height:clamp(190px,58vw,300px);min-height:0}
+ .service-stage-window .service-card-body{padding:22px}
+ .process-stage-window .process-step{padding:22px}
+ .process-stage-window .process-visual{height:clamp(170px,54vw,260px)}
+}
