@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predev": "node ../../scripts/download-process-images.mjs architectural",
+    "prebuild": "node ../../scripts/download-process-images.mjs architectural"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
