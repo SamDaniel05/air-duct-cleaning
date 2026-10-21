@@ -13,9 +13,9 @@ const concepts = {
 type Key = keyof typeof concepts;
 const processImages: Record<Key, [string, string, string]> = {
  "clear-living": [
-  "/air-duct-cleaning/clear-living/images/process-1.webp",
-  "/air-duct-cleaning/clear-living/images/process-2.webp",
-  "/air-duct-cleaning/clear-living/images/process-3.webp"
+  "/air-duct-cleaning/clear-living/images/process-1.svg",
+  "/air-duct-cleaning/clear-living/images/process-2.svg",
+  "/air-duct-cleaning/clear-living/images/process-3.svg"
  ]
 };
 const visualAssets: Record<Key,{about:string;matter:string;why:string;services:[string,string,string]}> = {
